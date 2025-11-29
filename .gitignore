@@ -1,0 +1,36 @@
+# Proyecto FullStack II - DSY1104
+# Backend (Spring Boot)
+backend_pasteleria/target/
+backend_pasteleria/.mvn/
+backend_pasteleria/mvnw
+backend_pasteleria/mvnw.cmd
+backend_pasteleria/.idea/
+backend_pasteleria/*.iml
+backend_pasteleria/*.ipr
+backend_pasteleria/*.iws
+
+# Frontend (React)
+frontend-react/node_modules/
+frontend-react/build/
+frontend-react/.env.local
+frontend-react/.env.development.local
+frontend-react/.env.test.local
+frontend-react/.env.production.local
+frontend-react/npm-debug.log*
+frontend-react/yarn-debug.log*
+frontend-react/yarn-error.log*
+
+# Sistema
+.DS_Store
+*.log
+.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Karma/Jasmine
+frontend-react/coverage/
+frontend-react/.nyc_output/
