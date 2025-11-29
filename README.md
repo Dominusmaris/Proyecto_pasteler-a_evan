@@ -1,60 +1,44 @@
-# 🍰 Proyecto FullStack II - Pastelería
+# Proyecto Pastelería - FullStack II
 
-**DSY1104 - Desarrollo FullStack II**
-**Evaluación Parcial N°3**
+Evaluación N°3 para DSY1104
 
-## 📋 Descripción
-Sistema completo de pastelería con gestión de productos, autenticación JWT y panel administrativo.
+## Descripción
 
-## 🏗️ Arquitectura
-- **Frontend**: React 19.2.0 + Bootstrap
-- **Backend**: Spring Boot 3.5.7 + Java 17
-- **Base de Datos**: H2 (desarrollo)
-- **Testing**: Karma + Jasmine
-- **Seguridad**: JWT + Spring Security
+Sistema web de pastelería donde los usuarios pueden ver productos y los admins pueden gestionarlos. Hecho con React y Spring Boot.
 
-## 🚀 Ejecución Local
+## Tecnologías usadas
 
-### Backend
-```bash
+- Frontend: React con Bootstrap
+- Backend: Spring Boot con Java 17
+- Base de datos: H2
+- Testing: Karma y Jasmine
+
+## Como ejecutar
+
+**Backend:**
+```
 cd backend_pasteleria
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-### Frontend
-```bash
+**Frontend:**
+```
 cd frontend-react
-npm install
 npm start
 ```
 
-## 🌐 URLs de Desarrollo
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8082/api
-- **H2 Console**: http://localhost:8082/pasteleria-console
+Después ir a http://localhost:3000
 
-## 🧪 Testing
-```bash
-cd frontend-react
-open SpecRunner.html  # Tests Jasmine/Karma
-```
+## Lo que hace
 
-## 📁 Estructura del Proyecto
-```
-proyecto_fullstackII/
-├── backend_pasteleria/     # Spring Boot API
-├── frontend-react/         # React SPA
-└── README.md
-```
+- Los usuarios se pueden registrar y hacer login
+- Hay un carrito de compras básico
+- Los admins pueden agregar/editar/eliminar productos
+- Todo con autenticación JWT
 
-## 🔑 Funcionalidades
-- ✅ Registro y autenticación de usuarios
-- ✅ Gestión CRUD de productos (Admin)
-- ✅ Carrito de compras
-- ✅ Rutas protegidas por rol
-- ✅ Persistencia de sesión
-- ✅ Testing con cobertura
+## Tests
+
+Abrir el archivo SpecRunner.html en el navegador para ver los tests.
 
 ---
-**Autor**: [Tu nombre]
-**Fecha**: Noviembre 2025
+Noviembre 2025
