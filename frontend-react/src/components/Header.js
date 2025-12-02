@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Container, Button, Badge, Dropdown } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Header({ cartCount, onCartOpen }) {
   const { user, logout, isLoggedIn, isAdmin } = useAuth();
@@ -22,12 +22,14 @@ function Header({ cartCount, onCartOpen }) {
     }}>
       <Container>
         <Navbar.Brand
-          href="#home"
+          as={Link}
+          to="/"
           style={{
             fontFamily: 'Pacifico, cursive',
             fontSize: '28px',
             color: '#8B4513',
-            letterSpacing: '.5px'
+            letterSpacing: '.5px',
+            textDecoration: 'none'
           }}
         >
           Pastelería 1000 Sabores
@@ -48,12 +50,12 @@ function Header({ cartCount, onCartOpen }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#productos" style={{fontWeight: '700'}}>Productos</Nav.Link>
-            <Nav.Link href="#blog" style={{fontWeight: '700'}}>Blog</Nav.Link>
-            <Nav.Link href="#origen" style={{fontWeight: '700'}}>Origen</Nav.Link>
-            <Nav.Link href="#impacto" style={{fontWeight: '700'}}>Impacto</Nav.Link>
-            <Nav.Link href="#checkout" style={{fontWeight: '700'}}>Pedido</Nav.Link>
-            <Nav.Link href="#registro" style={{fontWeight: '700'}}>Registro</Nav.Link>
+            <Nav.Link as={Link} to="/productos" style={{fontWeight: '700'}}>Productos</Nav.Link>
+            <Nav.Link as={Link} to="/blog" style={{fontWeight: '700'}}>Blog</Nav.Link>
+            <Nav.Link as={Link} to="/origen" style={{fontWeight: '700'}}>Origen</Nav.Link>
+            <Nav.Link as={Link} to="/impacto" style={{fontWeight: '700'}}>Impacto</Nav.Link>
+            <Nav.Link as={Link} to="/pedido" style={{fontWeight: '700'}}>Pedido</Nav.Link>
+            <Nav.Link as={Link} to="/register" style={{fontWeight: '700'}}>Registro</Nav.Link>
           </Nav>
 
           <div className="d-flex gap-2">

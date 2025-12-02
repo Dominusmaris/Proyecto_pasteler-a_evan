@@ -8,6 +8,11 @@ import Login from './components/Login';
 import Register from './components/Register';
 import AdminPanel from './components/AdminPanel';
 import ProtectedRoute from './components/ProtectedRoute';
+import Productos from './components/Productos';
+import Blog from './components/Blog';
+import Origen from './components/Origen';
+import Impacto from './components/Impacto';
+import Pedido from './components/Pedido';
 import './App.css';
 
 function AppContent() {
@@ -83,6 +88,18 @@ function AppContent() {
             <ProductGrid onAddToCart={handleAddToCart} />
           }
         />
+
+        {/* Páginas del navbar */}
+        <Route
+          path="/productos"
+          element={
+            <Productos onAddToCart={handleAddToCart} />
+          }
+        />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/origen" element={<Origen />} />
+        <Route path="/impacto" element={<Impacto />} />
+        <Route path="/pedido" element={<Pedido />} />
 
         {/* Autenticación */}
         <Route path="/login" element={<Login />} />
