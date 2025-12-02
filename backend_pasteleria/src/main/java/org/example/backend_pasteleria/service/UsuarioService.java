@@ -1,48 +1,42 @@
 package org.example.backend_pasteleria.service;
 
-import org.example.backend_pasteleria.model.Usuario;
-import org.example.backend_pasteleria.model.Rol;
+import org.example.backend_pasteleria.entity.Usuario;
 import org.example.backend_pasteleria.repository.UsuarioRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UsuarioService {
 
-    private final UsuarioRepository repository;
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private final UsuarioRepository usuarioRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository repository) {
-        this.repository = repository;
+    public UsuarioService(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     public Usuario registrar(Usuario usuario) {
-        usuario.setContraseña(encoder.encode(usuario.getContraseña()));
-        usuario.setRol(Rol.CLIENTE); // Por defecto
-        return repository.save(usuario);
+        if (usuario.getPassword() == null || usuario.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("La contraseña no puede estar vacía");
+        }
+
+        if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("El correo ya está registrado");
+        }
+
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        return usuarioRepository.save(usuario);
     }
 
-    public List<Usuario> listar() {
-        return repository.findAll();
-    }
+    public Usuario autenticar(String email, String password) {
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
 
-    public Usuario buscarPorCorreo(String correo) {
-        return repository.findByCorreo(correo)
-                .orElseThrow(() -> new RuntimeException("No existe un usuario con ese correo"));
-    }
-
-    public Usuario login(String correo, String contraseña) {
-        Usuario usuario = buscarPorCorreo(correo);
-
-        if (!encoder.matches(contraseña, usuario.getContraseña())) {
-            throw new RuntimeException("Contraseña incorrecta");
+        if (!passwordEncoder.matches(password, usuario.getPassword())) {
+            throw new IllegalArgumentException("Contraseña incorrecta");
         }
 
         return usuario;
     }
 }
-
-
-
