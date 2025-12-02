@@ -19,30 +19,25 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API Pastelería - DSY1104")
-                        .description("Sistema de gestión de pastelería con autenticación JWT y CRUD de productos")
-                        .version("1.0.0")
+                        .title("API de Pastelería")
+                        .version("1.0")
+                        .description("API REST para gestión de productos y usuarios de pastelería")
                         .contact(new Contact()
-                                .name("Desarrollo FullStack II")
-                                .email("dsy1104@universidad.cl")))
-                .servers(List.of(
-                        new Server()
-                                .url("https://tu-app-render.onrender.com")
-                                .description("Servidor de Producción (Render)"),
-                        new Server()
-                                .url("http://34.230.111.161:8082")
-                                .description("Servidor AWS EC2"),
-                        new Server()
-                                .url("http://localhost:8082")
-                                .description("Servidor de Desarrollo")))
+                                .name("Equipo Pastelería")
+                                .email("contacto@pasteleria.com")))
+                .addServersItem(new Server()
+                        .url("https://pasteleria-backend-dlry.onrender.com")
+                        .description("Servidor de Producción (Render)"))
+                .addServersItem(new Server()
+                        .url("http://localhost:8082")
+                        .description("Servidor de Desarrollo"))
+                .addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
                 .components(new Components()
                         .addSecuritySchemes("Bearer Authentication",
                                 new SecurityScheme()
                                         .type(SecurityScheme.Type.HTTP)
                                         .scheme("bearer")
                                         .bearerFormat("JWT")
-                                        .description("Ingrese el token JWT")))
-                .addSecurityItem(new SecurityRequirement()
-                        .addList("Bearer Authentication"));
+                                        .description("Ingresa el token JWT sin el prefijo 'Bearer'")));
     }
 }
