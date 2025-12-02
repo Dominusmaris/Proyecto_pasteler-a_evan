@@ -1,5 +1,5 @@
 # Usar imagen base de Java 17
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-alpine
 
 # Directorio de trabajo
 WORKDIR /app
@@ -25,4 +25,4 @@ RUN ./mvnw package -DskipTests
 EXPOSE 8080
 
 # Comando para ejecutar la app
-CMD ["java", "-jar", "target/backend_pasteleria-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Dspring.profiles.active=prod", "-jar", "target/backend_pasteleria-0.0.1-SNAPSHOT.jar"]
