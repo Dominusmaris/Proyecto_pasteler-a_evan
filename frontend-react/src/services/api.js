@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// URL del backend - PUERTO ÚNICO PARA PASTELERÍA
-const API_BASE_URL = 'http://34.230.111.161:8082/api';
+// URL del backend - Usar variable de entorno o fallback
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://pasteleria-backend-dlry.onrender.com/api';
 
 // Configurar axios
 const api = axios.create({
@@ -28,7 +28,7 @@ export const productosService = {
 
 // Servicios de autenticación
 export const authService = {
-  login: (correo, contraseña) => api.post('/auth/login', { correo, contraseña }),
+  login: (email, password) => api.post('/auth/login', { email, password }),
   register: (usuario) => api.post('/auth/register', usuario),
   logout: () => {
     localStorage.removeItem('token');
