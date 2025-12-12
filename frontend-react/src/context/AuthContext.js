@@ -28,7 +28,8 @@ export const AuthProvider = ({ children }) => {
   const login = async (correo, contraseña) => {
     try {
       const response = await authService.login(correo, contraseña);
-      const { token, rol } = response.data;
+      const { token, usuario } = response.data;
+      const rol = usuario ? usuario.rol : 'CLIENTE';
 
       const userData = { correo, rol };
 

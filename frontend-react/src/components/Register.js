@@ -60,8 +60,8 @@ const Register = () => {
       setError('El correo es obligatorio');
       return false;
     }
-    if (!formData.correo.includes('@')) {
-      setError('Ingresa un correo válido');
+    if (!formData.correo.includes('@') || formData.correo.length < 5) {
+      setError('Ingresa un correo válido (ej: test@email.com)');
       return false;
     }
     if (!formData.contraseña.trim()) {
@@ -125,7 +125,7 @@ const Register = () => {
                 padding: '2rem'
               }}>
                 <h3 style={{color: '#28a745', fontFamily: 'Pacifico, cursive'}}>
-                  🎉 ¡Registro Exitoso!
+                  ¡Registro Exitoso!
                 </h3>
                 <p style={{fontSize: '1.1rem', margin: '1rem 0'}}>
                   Tu cuenta ha sido creada correctamente

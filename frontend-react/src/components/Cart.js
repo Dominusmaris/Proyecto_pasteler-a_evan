@@ -1,5 +1,6 @@
 import React from 'react';
 import { Offcanvas, Button, ListGroup, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 // Formateo de precios en pesos chilenos
 function clp(n) {
@@ -16,6 +17,12 @@ function personasLabel(size) {
 
 function Cart({ show, onHide, cartItems, onUpdateQuantity, onRemoveItem, onClearCart }) {
   const total = cartItems.reduce((sum, item) => sum + (item.precio * item.qty), 0);
+  const navigate = useNavigate();
+
+  const handleProceedToCheckout = () => {
+    onHide(); // Cerrar el carrito
+    navigate('/pedido'); // Ir a la página de pedidos
+  };
 
   return (
     <Offcanvas show={show} onHide={onHide} placement="end" style={{width: '420px'}}>
@@ -87,7 +94,7 @@ function Cart({ show, onHide, cartItems, onUpdateQuantity, onRemoveItem, onClear
                           onClick={() => onRemoveItem(index)}
                           title="Eliminar"
                         >
-                          🗑
+                          X
                         </Button>
                       </Col>
                     </Row>
@@ -126,6 +133,7 @@ function Cart({ show, onHide, cartItems, onUpdateQuantity, onRemoveItem, onClear
                       fontWeight: '800'
                     }}
                     className="w-100"
+                    onClick={handleProceedToCheckout}
                   >
                     Continuar al pago
                   </Button>

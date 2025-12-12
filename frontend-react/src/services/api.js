@@ -28,7 +28,7 @@ export const productosService = {
 
 // Servicios de autenticación
 export const authService = {
-  login: (email, password) => api.post('/auth/login', { email, password }),
+  login: (correo, contraseña) => api.post('/auth/login', { correo, contraseña }),
   register: (usuario) => api.post('/auth/register', usuario),
   logout: () => {
     localStorage.removeItem('token');
