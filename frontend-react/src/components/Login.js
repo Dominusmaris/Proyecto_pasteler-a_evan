@@ -64,7 +64,7 @@ const Login = () => {
           if (isAdmin()) {
             navigate('/admin');
           } else {
-            navigate('/');
+            navigate('/dashboard');
           }
         }, 500);
       } else {
@@ -96,7 +96,7 @@ const Login = () => {
                   fontSize: '2.5rem',
                   margin: 0
                 }}>
-                  🔐 Iniciar Sesión
+                  Iniciar Sesión
                 </h2>
                 <p style={{color: '#666', fontSize: '1rem', margin: '0.5rem 0 0 0'}}>
                   Accede a tu cuenta en Pastelería 1000 Sabores
@@ -168,7 +168,7 @@ const Login = () => {
                         }}
                         type="button"
                       >
-                        {showPassword ? '🙈' : '👁️'}
+                        {showPassword ? '●' : '○'}
                       </Button>
                     </div>
                   </Form.Group>
@@ -209,7 +209,7 @@ const Login = () => {
                           Iniciando sesión...
                         </>
                       ) : (
-                        '🚀 Iniciar Sesión'
+                        'Iniciar Sesión'
                       )}
                     </Button>
                   </div>
@@ -247,7 +247,7 @@ const Login = () => {
               }}>
                 <Card.Body>
                   <h6 style={{color: '#8B4513', fontWeight: 'bold', margin: '0 0 0.5rem 0'}}>
-                    🛡️ Usuarios de Prueba
+                    Usuarios de Prueba
                   </h6>
                   <div style={{fontSize: '0.8rem', color: '#666'}}>
                     <div><strong>Admin:</strong> admin@pasteleria.com / admin123</div>

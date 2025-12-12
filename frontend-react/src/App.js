@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
 import AdminPanel from './components/AdminPanel';
+import ClienteDashboard from './components/ClienteDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import Productos from './components/Productos';
 import Blog from './components/Blog';
@@ -115,6 +116,16 @@ function AppContent() {
           element={
             <ProtectedRoute adminOnly={true}>
               <AdminPanel />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Dashboard de cliente (protegido) */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute adminOnly={false}>
+              <ClienteDashboard />
             </ProtectedRoute>
           }
         />

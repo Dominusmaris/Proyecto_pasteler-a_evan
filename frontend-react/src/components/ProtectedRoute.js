@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="alert alert-danger text-center">
-              <h4>🚫 Acceso Denegado</h4>
+              <h4>Acceso Denegado</h4>
               <p>No tienes permisos para acceder a esta sección.</p>
               <p>Solo los administradores pueden ver esta página.</p>
               <button

@@ -94,26 +94,43 @@ function Header({ cartCount, onCartOpen }) {
                 <Dropdown.Toggle
                   variant="success"
                   style={{
-                    background: '#28a745',
-                    border: '2px solid #28a745',
+                    background: isAdmin() ? 'linear-gradient(45deg, #ff6b6b, #4ecdc4)' : '#28a745',
+                    border: `2px solid ${isAdmin() ? '#ff6b6b' : '#28a745'}`,
                     borderRadius: '14px',
-                    fontWeight: '800'
+                    fontWeight: '800',
+                    boxShadow: isAdmin() ? '0 4px 8px rgba(0,0,0,0.2)' : 'none'
                   }}
                 >
-                  👤 {user.correo}
+                  {isAdmin() && <span style={{marginRight: '8px'}}>★</span>}
+                  {user.correo}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item disabled>
                     Rol: {user.rol}
                   </Dropdown.Item>
                   <Dropdown.Divider />
-                  {isAdmin() && (
-                    <Dropdown.Item onClick={() => navigate('/admin')}>
-                      🛡️ Panel Admin
-                    </Dropdown.Item>
+                  {isAdmin() ? (
+                    <>
+                      <Dropdown.Item onClick={() => navigate('/admin')}>
+                        Panel Admin
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => navigate('/productos')}>
+                        Gestionar Productos
+                      </Dropdown.Item>
+                    </>
+                  ) : (
+                    <>
+                      <Dropdown.Item onClick={() => navigate('/productos')}>
+                        Ver Catálogo
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => navigate('/dashboard')}>
+                        Mi Dashboard
+                      </Dropdown.Item>
+                    </>
                   )}
+                  <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>
-                    🚪 Cerrar Sesión
+                    Cerrar Sesión
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

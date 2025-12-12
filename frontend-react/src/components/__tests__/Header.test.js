@@ -112,10 +112,10 @@ describe('Header Component', () => {
     render(<HeaderWrapper />);
 
     // Hacer click en el dropdown del usuario
-    const userDropdown = screen.getByText('👤 admin@test.com');
+    const userDropdown = screen.getByText('admin@test.com');
     fireEvent.click(userDropdown);
 
-    expect(screen.getByText('🛡️ Panel Admin')).toBeInTheDocument();
+    expect(screen.getByText('Panel Admin')).toBeInTheDocument();
   });
 
   test('navega a productos al hacer click en "Ver Catálogo"', () => {

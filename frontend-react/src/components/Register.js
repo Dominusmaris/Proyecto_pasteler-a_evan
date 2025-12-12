@@ -272,7 +272,7 @@ const Register = () => {
                         }}
                         type="button"
                       >
-                        {showPassword ? '🙈' : '👁️'}
+                        {showPassword ? '●' : '○'}
                       </Button>
                     </div>
                     {formData.contraseña && (
@@ -326,7 +326,7 @@ const Register = () => {
                         }}
                         type="button"
                       >
-                        {showConfirmPassword ? '🙈' : '👁️'}
+                        {showConfirmPassword ? '●' : '○'}
                       </Button>
                     </div>
                     {formData.confirmarContraseña && (
@@ -363,7 +363,7 @@ const Register = () => {
                           Creando cuenta...
                         </>
                       ) : (
-                        '🚀 Crear Mi Cuenta'
+                        'Crear Mi Cuenta'
                       )}
                     </Button>
                   </div>
@@ -401,7 +401,7 @@ const Register = () => {
               }}>
                 <Card.Body>
                   <h6 style={{color: '#8B4513', fontWeight: 'bold', margin: '0 0 0.5rem 0'}}>
-                    🛡️ Política de Privacidad
+                    Política de Privacidad
                   </h6>
                   <p style={{fontSize: '0.8rem', color: '#666', margin: 0}}>
                     Al crear una cuenta aceptas nuestros términos y condiciones.

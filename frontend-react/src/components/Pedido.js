@@ -35,7 +35,7 @@ function Pedido() {
 
   const deliveryOptions = [
     { value: 'tienda', label: '🏪 Retiro en tienda', price: 'Gratis' },
-    { value: 'domicilio', label: '🚚 Delivery a domicilio', price: '$2.000' },
+    { value: 'domicilio', label: 'Delivery a domicilio', price: '$2.000' },
     { value: 'express', label: '⚡ Express (mismo día)', price: '$4.000' }
   ];
 
@@ -55,7 +55,7 @@ function Pedido() {
             fontSize: '3.5rem',
             textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
           }}>
-            🛒 Realizar Pedido
+            Realizar Pedido
           </h1>
           <p style={{
             color: '#666',
@@ -210,7 +210,7 @@ function Pedido() {
                         padding: '12px'
                       }}
                     >
-                      🛒 Confirmar Pedido
+                      Confirmar Pedido
                     </Button>
                   </div>
                 </Form>
@@ -222,7 +222,7 @@ function Pedido() {
             <Card className="mb-4" style={{border: '2px solid #8B4513', borderRadius: '15px'}}>
               <Card.Header style={{backgroundColor: '#FFE4E1', borderBottom: '2px solid #8B4513'}}>
                 <h4 style={{color: '#8B4513', fontFamily: 'Pacifico, cursive', margin: 0}}>
-                  🚚 Opciones de Entrega
+                  Opciones de Entrega
                 </h4>
               </Card.Header>
               <Card.Body>

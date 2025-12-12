@@ -117,7 +117,7 @@ const AdminPanel = () => {
     <Container className="mt-4">
       <Row>
         <Col>
-          <h2>🛡️ Panel de Administración</h2>
+          <h2>Panel de Administración</h2>
           <p className="text-muted">Bienvenido, {user.correo} - Rol: {user.rol}</p>
 
           {error && <Alert variant="danger">{error}</Alert>}
