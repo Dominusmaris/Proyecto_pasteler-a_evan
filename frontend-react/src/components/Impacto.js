@@ -25,7 +25,7 @@ function Impacto() {
       color: "warning"
     },
     {
-      icon: ""
+      icon: "",
       title: "Eventos Comunitarios",
       percentage: 95,
       description: "De los eventos locales cuentan con nuestros productos donados",
