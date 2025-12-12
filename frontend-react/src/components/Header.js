@@ -61,6 +61,7 @@ function Header({ cartCount, onCartOpen }) {
           <div className="d-flex gap-2">
             <Button
               variant="outline-primary"
+              onClick={() => navigate('/productos')}
               style={{
                 background: '#FFC0CB',
                 color: '#8B4513',

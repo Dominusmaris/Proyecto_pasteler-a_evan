@@ -6,6 +6,7 @@ import ProductGrid from './components/ProductGrid';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import Register from './components/Register';
+import ForgotPassword from './components/ForgotPassword';
 import AdminPanel from './components/AdminPanel';
 import ProtectedRoute from './components/ProtectedRoute';
 import Productos from './components/Productos';
@@ -13,7 +14,9 @@ import Blog from './components/Blog';
 import Origen from './components/Origen';
 import Impacto from './components/Impacto';
 import Pedido from './components/Pedido';
+import Footer from './components/Footer';
 import './App.css';
+import './styles/CustomStyles.css';
 
 function AppContent() {
   const [cartItems, setCartItems] = useState([]);
@@ -104,6 +107,7 @@ function AppContent() {
         {/* Autenticación */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Panel de admin (protegido) */}
         <Route
@@ -125,6 +129,9 @@ function AppContent() {
         onRemoveItem={handleRemoveItem}
         onClearCart={handleClearCart}
       />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

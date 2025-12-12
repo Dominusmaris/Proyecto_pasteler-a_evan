@@ -1,0 +1,391 @@
+/* 🎨 Custom Styles para Pastelería 1000 Sabores */
+
+/* ===== VARIABLES CSS ===== */
+:root {
+  --pasteleria-primary: #8B4513;
+  --pasteleria-secondary: #FFC0CB;
+  --pasteleria-background: #FFF5E1;
+  --pasteleria-accent: #FFE4E1;
+  --pasteleria-success: #28a745;
+  --pasteleria-danger: #dc3545;
+  --pasteleria-warning: #ffc107;
+  --pasteleria-info: #17a2b8;
+
+  --font-primary: 'Pacifico', cursive;
+  --font-secondary: 'Roboto', sans-serif;
+
+  --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+  --shadow-heavy: 0 8px 16px rgba(0,0,0,0.2);
+
+  --border-radius: 15px;
+  --border-radius-small: 8px;
+  --transition: all 0.3s ease;
+}
+
+/* ===== TIPOGRAFÍA PERSONALIZADA ===== */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--pasteleria-background);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .display-font {
+  font-family: var(--font-primary);
+  color: var(--pasteleria-primary);
+}
+
+/* ===== COMPONENTES REUTILIZABLES ===== */
+
+/* Botones personalizados */
+.btn-pasteleria-primary {
+  background-color: var(--pasteleria-primary);
+  border: 2px solid var(--pasteleria-primary);
+  color: white;
+  font-weight: 700;
+  border-radius: var(--border-radius-small);
+  padding: 12px 24px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-light);
+}
+
+.btn-pasteleria-primary:hover {
+  background-color: #6d3410;
+  border-color: #6d3410;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-pasteleria-secondary {
+  background-color: var(--pasteleria-secondary);
+  border: 2px solid var(--pasteleria-primary);
+  color: var(--pasteleria-primary);
+  font-weight: 700;
+  border-radius: var(--border-radius-small);
+  padding: 12px 24px;
+  transition: var(--transition);
+}
+
+.btn-pasteleria-secondary:hover {
+  background-color: var(--pasteleria-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Cards personalizadas */
+.card-pasteleria {
+  border: 2px solid var(--pasteleria-primary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.card-pasteleria:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.card-pasteleria .card-header {
+  background-color: var(--pasteleria-secondary);
+  border-bottom: 2px solid var(--pasteleria-primary);
+  padding: 1.5rem;
+}
+
+/* Inputs personalizados */
+.form-control-pasteleria {
+  border: 2px solid var(--pasteleria-primary);
+  border-radius: var(--border-radius-small);
+  padding: 12px 16px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-control-pasteleria:focus {
+  border-color: var(--pasteleria-primary);
+  box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+}
+
+/* Alertas personalizadas */
+.alert-pasteleria {
+  border-radius: var(--border-radius);
+  border: 2px solid var(--pasteleria-primary);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.alert-pasteleria-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border-color: var(--pasteleria-success);
+  color: var(--pasteleria-success);
+}
+
+.alert-pasteleria-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-color: var(--pasteleria-danger);
+  color: var(--pasteleria-danger);
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+
+/* Spacing responsive */
+.responsive-padding {
+  padding: 1rem;
+}
+
+@media (min-width: 576px) {
+  .responsive-padding {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-padding {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-padding {
+    padding: 3rem;
+  }
+}
+
+/* Texto responsive */
+.responsive-title {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  .responsive-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-title {
+    font-size: 2.75rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-title {
+    font-size: 3.5rem;
+  }
+}
+
+/* ===== ANIMACIONES ===== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* ===== COMPONENTES ESPECÍFICOS ===== */
+
+/* Loading spinner personalizado */
+.pasteleria-spinner {
+  border: 4px solid var(--pasteleria-accent);
+  border-left: 4px solid var(--pasteleria-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Navbar enhancements */
+.navbar-pasteleria {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 3px solid var(--pasteleria-secondary);
+  box-shadow: var(--shadow-medium);
+}
+
+.navbar-brand-enhanced {
+  font-family: var(--font-primary);
+  font-size: 1.75rem;
+  color: var(--pasteleria-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.navbar-brand-enhanced:hover {
+  color: var(--pasteleria-primary);
+  transform: scale(1.05);
+}
+
+/* Footer enhancements */
+.footer-pasteleria {
+  background: linear-gradient(135deg, var(--pasteleria-primary) 0%, #6d3410 100%);
+  color: white;
+  padding: 3rem 0 1rem 0;
+  margin-top: 4rem;
+  position: relative;
+}
+
+.footer-pasteleria::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pasteleria-secondary), var(--pasteleria-accent), var(--pasteleria-secondary));
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+
+/* Focus visible mejorado */
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: 3px solid var(--pasteleria-warning);
+  outline-offset: 2px;
+}
+
+/* Contraste mejorado */
+.high-contrast {
+  background-color: black;
+  color: white;
+}
+
+.high-contrast .btn-pasteleria-primary {
+  background-color: white;
+  color: black;
+  border-color: white;
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pasteleria-background: #2d2d2d;
+    --pasteleria-accent: #404040;
+  }
+
+  body {
+    background-color: var(--pasteleria-background);
+    color: #ffffff;
+  }
+
+  .card-pasteleria {
+    background-color: #404040;
+    color: white;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .navbar-pasteleria,
+  .btn,
+  .d-print-none {
+    display: none !important;
+  }
+
+  .container {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .card-pasteleria {
+    border: 1px solid #000;
+    break-inside: avoid;
+  }
+}
+
+/* ===== UTILIDADES DE DESARROLLO ===== */
+
+/* Debug borders (solo en desarrollo) */
+.debug * {
+  outline: 1px solid red;
+}
+
+.debug *:hover {
+  outline: 2px solid blue;
+}
+
+/* Performance indicators */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* ===== MEJORAS MÓVILES ===== */
+
+/* Touch targets mejorados */
+@media (max-width: 767px) {
+  .btn,
+  .nav-link,
+  .dropdown-toggle {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-control {
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+
+  /* Sticky header en móviles */
+  .navbar-pasteleria {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+  }
+}
