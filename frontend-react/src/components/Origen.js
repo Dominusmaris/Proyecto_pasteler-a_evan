@@ -40,7 +40,7 @@ function Origen() {
             fontSize: '3.5rem',
             textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
           }}>
-            🏠 Nuestro Origen
+            Nuestro Origen
           </h1>
           <p style={{
             color: '#666',
@@ -59,7 +59,7 @@ function Origen() {
             <Card style={{border: '2px solid #8B4513', borderRadius: '15px', height: '100%'}}>
               <Card.Header style={{backgroundColor: '#FFC0CB', borderBottom: '2px solid #8B4513'}}>
                 <h3 style={{color: '#8B4513', fontFamily: 'Pacifico, cursive', margin: 0}}>
-                  👵 Abuela María
+                  Abuela María
                 </h3>
               </Card.Header>
               <Card.Body>
@@ -81,7 +81,7 @@ function Origen() {
             <Card style={{border: '2px solid #8B4513', borderRadius: '15px', height: '100%'}}>
               <Card.Header style={{backgroundColor: '#FFC0CB', borderBottom: '2px solid #8B4513'}}>
                 <h3 style={{color: '#8B4513', fontFamily: 'Pacifico, cursive', margin: 0}}>
-                  🎯 Nuestra Misión
+                  Nuestra Misión
                 </h3>
               </Card.Header>
               <Card.Body>

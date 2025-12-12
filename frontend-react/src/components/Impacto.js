@@ -4,28 +4,28 @@ import { Container, Row, Col, Card, ProgressBar, Badge } from 'react-bootstrap';
 function Impacto() {
   const impactData = [
     {
-      icon: "🌱",
+      icon: "",
       title: "Ingredientes Locales",
       percentage: 85,
       description: "De nuestros ingredientes provienen de productores locales en un radio de 50km",
       color: "success"
     },
     {
-      icon: "♻️",
+      icon: "",
       title: "Packaging Sustentable",
       percentage: 70,
       description: "De nuestros envases son biodegradables o reciclables",
       color: "info"
     },
     {
-      icon: "👨‍👩‍👧‍👦",
+      icon: "",
       title: "Empleos Locales",
       percentage: 100,
       description: "De nuestro equipo son personas de la comunidad local",
       color: "warning"
     },
     {
-      icon: "🎂",
+      icon: ""
       title: "Eventos Comunitarios",
       percentage: 95,
       description: "De los eventos locales cuentan con nuestros productos donados",
@@ -61,7 +61,7 @@ function Impacto() {
             fontSize: '3.5rem',
             textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
           }}>
-            🌍 Nuestro Impacto Social
+            Nuestro Impacto Social
           </h1>
           <p style={{
             color: '#666',
@@ -82,7 +82,7 @@ function Impacto() {
             fontSize: '2.5rem',
             marginBottom: '3rem'
           }}>
-            📊 Nuestros Números
+            Nuestros Números
           </h2>
 
           <Row>
@@ -135,7 +135,7 @@ function Impacto() {
             fontSize: '2.5rem',
             marginBottom: '3rem'
           }}>
-            🤝 Nuestras Iniciativas
+            Nuestras Iniciativas
           </h2>
 
           <Row>
@@ -184,7 +184,7 @@ function Impacto() {
               <Card style={{border: '2px solid #8B4513', borderRadius: '15px', height: '100%'}}>
                 <Card.Header style={{backgroundColor: '#FFC0CB', borderBottom: '2px solid #8B4513'}}>
                   <h3 style={{color: '#8B4513', fontFamily: 'Pacifico, cursive', margin: 0}}>
-                    🌱 Compromiso Ambiental
+                    Compromiso Ambiental
                   </h3>
                 </Card.Header>
                 <Card.Body>
@@ -202,7 +202,7 @@ function Impacto() {
               <Card style={{border: '2px solid #8B4513', borderRadius: '15px', height: '100%'}}>
                 <Card.Header style={{backgroundColor: '#FFE4E1', borderBottom: '2px solid #8B4513'}}>
                   <h3 style={{color: '#8B4513', fontFamily: 'Pacifico, cursive', margin: 0}}>
-                    🎯 Metas 2025
+                    Metas 2025
                   </h3>
                 </Card.Header>
                 <Card.Body>

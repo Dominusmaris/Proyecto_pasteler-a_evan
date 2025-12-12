@@ -196,7 +196,7 @@ const Register = () => {
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3">
                     <Form.Label style={{fontWeight: 'bold', color: '#8B4513'}}>
-                      👤 Nombre Completo
+                      Nombre Completo
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -217,7 +217,7 @@ const Register = () => {
 
                   <Form.Group className="mb-3">
                     <Form.Label style={{fontWeight: 'bold', color: '#8B4513'}}>
-                      📧 Correo Electrónico
+                      Correo Electrónico
                     </Form.Label>
                     <Form.Control
                       type="email"
@@ -238,7 +238,7 @@ const Register = () => {
 
                   <Form.Group className="mb-3">
                     <Form.Label style={{fontWeight: 'bold', color: '#8B4513'}}>
-                      🔑 Contraseña
+                      Contraseña
                     </Form.Label>
                     <div className="position-relative">
                       <Form.Control
@@ -292,7 +292,7 @@ const Register = () => {
 
                   <Form.Group className="mb-4">
                     <Form.Label style={{fontWeight: 'bold', color: '#8B4513'}}>
-                      🔑 Confirmar Contraseña
+                      Confirmar Contraseña
                     </Form.Label>
                     <div className="position-relative">
                       <Form.Control

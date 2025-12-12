@@ -113,7 +113,7 @@ const Login = () => {
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3">
                     <Form.Label style={{fontWeight: 'bold', color: '#8B4513'}}>
-                      📧 Correo Electrónico
+                      Correo Electrónico
                     </Form.Label>
                     <Form.Control
                       type="email"
@@ -134,7 +134,7 @@ const Login = () => {
 
                   <Form.Group className="mb-3">
                     <Form.Label style={{fontWeight: 'bold', color: '#8B4513'}}>
-                      🔑 Contraseña
+                      Contraseña
                     </Form.Label>
                     <div className="position-relative">
                       <Form.Control
