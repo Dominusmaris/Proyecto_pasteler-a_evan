@@ -99,9 +99,8 @@ function Impacto() {
                   <Card.Header style={{
                     backgroundColor: '#FFC0CB',
                     borderBottom: '2px solid #8B4513',
-                    fontSize: '3rem'
+                    padding: '1rem'
                   }}>
-                    {item.icon}
                   </Card.Header>
                   <Card.Body>
                     <Card.Title style={{color: '#8B4513', fontWeight: 'bold'}}>
