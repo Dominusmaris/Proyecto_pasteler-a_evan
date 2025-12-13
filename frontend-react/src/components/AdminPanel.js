@@ -11,10 +11,12 @@ const AdminPanel = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [formData, setFormData] = useState({
+    codigo: '',
     nombre: '',
     descripcion: '',
     precio: '',
-    imagenUrl: ''
+    imagenUrl: '',
+    categoria: 'POSTRES'
   });
 
   const { user } = useAuth();
@@ -26,11 +28,15 @@ const AdminPanel = () => {
   const cargarProductos = async () => {
     try {
       setLoading(true);
+      setError(''); // Limpiar errores previos
       const response = await productosService.obtenerTodos();
       setProductos(response.data);
     } catch (error) {
-      setError('Error al cargar productos');
-      console.error(error);
+      console.error('Error al cargar productos:', error);
+      // Solo mostrar error si es importante, no al inicio
+      if (productos.length === 0) {
+        setError('No se pueden cargar los productos en este momento');
+      }
     } finally {
       setLoading(false);
     }
@@ -49,12 +55,28 @@ const AdminPanel = () => {
     setError('');
     setSuccess('');
 
+    // Validar datos antes de enviar
+    if (!formData.codigo || !formData.nombre || !formData.precio) {
+      setError('Por favor completa todos los campos requeridos');
+      setLoading(false);
+      return;
+    }
+
+    const productoData = {
+      codigo: formData.codigo.trim(),
+      nombre: formData.nombre.trim(),
+      descripcion: formData.descripcion.trim(),
+      precio: parseFloat(formData.precio),
+      imagenUrl: formData.imagenUrl.trim() || null,
+      categoria: formData.categoria
+    };
+
     try {
       if (editingProduct) {
-        await productosService.actualizar(editingProduct.id, formData);
+        await productosService.actualizar(editingProduct.id, productoData);
         setSuccess('Producto actualizado correctamente');
       } else {
-        await productosService.crear(formData);
+        await productosService.crear(productoData);
         setSuccess('Producto creado correctamente');
       }
 
@@ -62,8 +84,12 @@ const AdminPanel = () => {
       setShowModal(false);
       resetForm();
     } catch (error) {
-      setError('Error al guardar producto');
-      console.error(error);
+      console.error('Error detallado:', error);
+      if (error.response && error.response.data) {
+        setError(`Error: ${error.response.data.message || 'No se pudo guardar el producto'}`);
+      } else {
+        setError('No se pudo realizar la petición. Verifica la conexión.');
+      }
     } finally {
       setLoading(false);
     }
@@ -72,10 +98,12 @@ const AdminPanel = () => {
   const handleEdit = (producto) => {
     setEditingProduct(producto);
     setFormData({
+      codigo: producto.codigo || '',
       nombre: producto.nombre,
       descripcion: producto.descripcion,
       precio: producto.precio.toString(),
-      imagenUrl: producto.imagenUrl || ''
+      imagenUrl: producto.imagenUrl || '',
+      categoria: producto.categoria || 'POSTRES'
     });
     setShowModal(true);
   };
@@ -100,12 +128,16 @@ const AdminPanel = () => {
 
   const resetForm = () => {
     setFormData({
+      codigo: '',
       nombre: '',
       descripcion: '',
       precio: '',
-      imagenUrl: ''
+      imagenUrl: '',
+      categoria: 'POSTRES'
     });
     setEditingProduct(null);
+    setError('');
+    setSuccess('');
   };
 
   const handleCloseModal = () => {
@@ -148,6 +180,7 @@ const AdminPanel = () => {
                   <thead>
                     <tr>
                       <th>ID</th>
+                      <th>Código</th>
                       <th>Nombre</th>
                       <th>Descripción</th>
                       <th>Precio</th>
@@ -158,6 +191,7 @@ const AdminPanel = () => {
                     {productos.map(producto => (
                       <tr key={producto.id}>
                         <td>{producto.id}</td>
+                        <td>{producto.codigo}</td>
                         <td>{producto.nombre}</td>
                         <td>{producto.descripcion?.substring(0, 50)}...</td>
                         <td>${producto.precio?.toLocaleString()}</td>
@@ -206,37 +240,69 @@ const AdminPanel = () => {
         <Form onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Group className="mb-3">
-              <Form.Label>Nombre</Form.Label>
+              <Form.Label>Código *</Form.Label>
               <Form.Control
                 type="text"
-                name="nombre"
-                value={formData.nombre}
+                name="codigo"
+                value={formData.codigo}
                 onChange={handleInputChange}
+                placeholder="Ej: TC001, CP001"
                 required
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Descripción</Form.Label>
+              <Form.Label>Nombre *</Form.Label>
+              <Form.Control
+                type="text"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleInputChange}
+                placeholder="Nombre del producto"
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Descripción *</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
                 name="descripcion"
                 value={formData.descripcion}
                 onChange={handleInputChange}
+                placeholder="Descripción del producto"
                 required
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Precio</Form.Label>
+              <Form.Label>Precio (CLP) *</Form.Label>
               <Form.Control
                 type="number"
                 name="precio"
                 value={formData.precio}
                 onChange={handleInputChange}
+                placeholder="Ej: 25000"
+                min="1"
+                step="1"
                 required
               />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Categoría</Form.Label>
+              <Form.Select
+                name="categoria"
+                value={formData.categoria}
+                onChange={handleInputChange}
+              >
+                <option value="TORTAS">Tortas</option>
+                <option value="CUPCAKES">Cupcakes</option>
+                <option value="POSTRES">Postres</option>
+                <option value="GALLETAS">Galletas</option>
+                <option value="PANES">Panes</option>
+              </Form.Select>
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -246,6 +312,7 @@ const AdminPanel = () => {
                 name="imagenUrl"
                 value={formData.imagenUrl}
                 onChange={handleInputChange}
+                placeholder="https://ejemplo.com/imagen.jpg"
               />
             </Form.Group>
           </Modal.Body>
