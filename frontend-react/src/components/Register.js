@@ -97,7 +97,13 @@ const Register = () => {
     };
 
     try {
-      const result = await register(usuario);
+      // Timeout para evitar esperas muy largas
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('timeout')), 15000)
+      );
+
+      const registerPromise = register(usuario);
+      const result = await Promise.race([registerPromise, timeoutPromise]);
 
       if (result.success) {
         setSuccess(true);
@@ -106,7 +112,11 @@ const Register = () => {
         setError(result.error || 'Error al registrar usuario');
       }
     } catch (err) {
-      setError('Error de conexión. Inténtalo nuevamente.');
+      if (err.message === 'timeout') {
+        setError('El servidor está tardando mucho. Inténtalo nuevamente en unos minutos.');
+      } else {
+        setError('Error de conexión. Inténtalo nuevamente.');
+      }
     } finally {
       setLoading(false);
     }
@@ -179,7 +189,7 @@ const Register = () => {
                   fontSize: '2.5rem',
                   margin: 0
                 }}>
-                  📝 Crear Cuenta
+                  Crear Cuenta
                 </h2>
                 <p style={{color: '#666', fontSize: '1rem', margin: '0.5rem 0 0 0'}}>
                   Únete a la familia de Pastelería 1000 Sabores
@@ -189,7 +199,7 @@ const Register = () => {
               <Card.Body style={{padding: '2rem'}}>
                 {error && (
                   <Alert variant="danger" style={{borderRadius: '10px'}}>
-                    <strong>❌ Error:</strong> {error}
+                    <strong>Error:</strong> {error}
                   </Alert>
                 )}
 
@@ -224,7 +234,7 @@ const Register = () => {
                       name="correo"
                       value={formData.correo}
                       onChange={handleChange}
-                      placeholder="tu@email.com"
+                      placeholder="usuario@gmail.com"
                       autoComplete="email"
                       style={{
                         border: '2px solid #8B4513',
@@ -332,9 +342,9 @@ const Register = () => {
                     {formData.confirmarContraseña && (
                       <div className="mt-2">
                         {formData.contraseña === formData.confirmarContraseña ? (
-                          <small style={{color: '#28a745'}}>✅ Las contraseñas coinciden</small>
+                          <small style={{color: '#28a745'}}>Las contraseñas coinciden</small>
                         ) : (
-                          <small style={{color: '#dc3545'}}>❌ Las contraseñas no coinciden</small>
+                          <small style={{color: '#dc3545'}}>Las contraseñas no coinciden</small>
                         )}
                       </div>
                     )}
@@ -385,7 +395,7 @@ const Register = () => {
                           padding: '10px'
                         }}
                       >
-                        🔐 Iniciar Sesión
+                        Iniciar Sesión
                       </Button>
                     </Link>
                   </div>
