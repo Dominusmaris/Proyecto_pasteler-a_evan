@@ -70,7 +70,7 @@ function Header({ cartCount, onCartOpen }) {
                 fontWeight: '800'
               }}
             >
-              🧁 Ver Catálogo
+              Ver Catálogo
             </Button>
             <Button
               variant="outline-secondary"
@@ -83,7 +83,7 @@ function Header({ cartCount, onCartOpen }) {
                 fontWeight: '800'
               }}
             >
-              🧺 Carrito{' '}
+              Carrito{' '}
               <Badge bg="secondary" style={{marginLeft: '6px'}}>
                 {cartCount || 0}
               </Badge>
@@ -147,7 +147,7 @@ function Header({ cartCount, onCartOpen }) {
                     fontWeight: '800'
                   }}
                 >
-                  🔑 Login
+                  Login
                 </Button>
                 <Button
                   variant="outline-success"
@@ -160,7 +160,7 @@ function Header({ cartCount, onCartOpen }) {
                     fontWeight: '800'
                   }}
                 >
-                  📝 Registro
+                  Registro
                 </Button>
               </div>
             )}
